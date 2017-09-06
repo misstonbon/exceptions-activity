@@ -1,6 +1,8 @@
 class
   InsufficientFundsError < StandardError
 
-  InsufficientFundsError.new "Cannot withdraw due to lack of funds"
+  def initialize
+    super ("some error message")
+  end
 
 end

@@ -11,16 +11,20 @@ module Bank
     end
 
     def withdraw(amount)
-      if amount < 0
-        raise ArgumentError.new("Cannot withdraw a negative amount (got #{amount})")
-      end
+      begin
+        if amount < 0
+          raise ArgumentError.new("Cannot withdraw a negative amount (got #{amount})")
+        end
 
-      if @balance - amount < 0
-        raise InsufficientFundsError.new "Cannot withdraw due to lack of funds"
-        return @balance
-      end
+        if @balance - amount < 0
+          raise InsufficientFundsError.new
+          retun @balance
+        end
 
-      @balance -= amount
+        @balance -= amount
+      rescue InsufficientFundsError => exception
+        puts exception.message
+      end
     end
 
     def deposit(amount)
