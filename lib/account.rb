@@ -16,7 +16,7 @@ module Bank
       end
 
       if @balance - amount < 0
-        puts "Cannot withdraw; balance would go negative"
+        raise InsufficientFundsError.new "Cannot withdraw due to lack of funds"
         return @balance
       end
 

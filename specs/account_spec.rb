@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/account'
-# require_relative '../lib/insufficient_funds_error'
+require_relative '../lib/insufficient_funds_error'
 
 describe "Account#withdraw" do
   it "Raises an Insufficient Funds Error if withdrawing too much" do
